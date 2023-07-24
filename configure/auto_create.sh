@@ -141,6 +141,4 @@ then
     echo '}' >> $JSON_FILE
 fi
 
-chmod +x $PY_FILE
-
 nohup python3 $PY_FILE &

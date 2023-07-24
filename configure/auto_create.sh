@@ -104,12 +104,11 @@ do
 
 done
 
-
-
 # Process of writing ES node information in server_info.json file
 SCRIPT=$(readlink -f $0)                    # Absolute path to this script
 SCRIPTPATH=$(dirname $SCRIPT)               # Absolute path this script is in
 JSON_FILE="$SCRIPTPATH/server_info.json"    # The path where the "server_info.json" file actually exists
+PY_FILE="$SCRIPTPATH/es_index_managed.py"   # This variable is the path where the Python code monitoring the ES cluster exists.
 
 # Check if server_info.json file exists
 if [ -e $JSON_FILE ]
@@ -141,3 +140,7 @@ then
     echo >> $JSON_FILE
     echo '}' >> $JSON_FILE
 fi
+
+chmod +x $PY_FILE
+
+nohup python3 $PY_FILE &

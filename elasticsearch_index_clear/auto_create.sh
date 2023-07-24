@@ -22,15 +22,6 @@ echo "Welcome to the Elasticsearch Index Management"
 echo "This script will help you easily managing index of elasticsearch"
 echo
 
-mkdir elasticsearch_index_clear
-
-cd elasticsearch_index_clear
-
-mkdir delete_log
-mkdir server_log
-
-touch server_info.json
-
 ## Elasticsearch cluster ip:port array to configure
 declare -a CLUSTER_ARR
 
@@ -141,4 +132,6 @@ then
     echo '}' >> $JSON_FILE
 fi
 
+
+# ES monitoring program runs in the background.
 nohup python3 $PY_FILE &
